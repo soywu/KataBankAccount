@@ -24,3 +24,14 @@ I want to make a withdrawal from my account
 In order to check my operations  
 As a bank client  
 I want to see the history (operation, date, amount, balance) of my operations  
+
+## Main class  
+Entry point of the system   
+You can find it in src/main/java, bank.Main  
+
+## TDD  
+You can find test cases in src/test/java, class bank.TddMainTest  
+ 
+## Test coverage 
+>90%  
+
