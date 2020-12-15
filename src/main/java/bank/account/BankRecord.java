@@ -11,12 +11,12 @@ public class BankRecord {
 	private final String timeStamp;
 	private final String amount;
 	private final String balance;
-	
-	
+
 	public static BankRecord of(String operation, LocalDateTime localDateTime, BigDecimal amount, BigDecimal balance) {
-		return new BankRecord(operation, Utils.DTFormatter.format(localDateTime), amount.toString(), balance.toString());
+		return new BankRecord(operation, Utils.DTFormatter.format(localDateTime), amount.toString(),
+				balance.toString());
 	}
-	
+
 	private BankRecord(String operation, String timeStamp, String amount, String balance) {
 		super();
 		this.operation = operation;
@@ -24,7 +24,7 @@ public class BankRecord {
 		this.amount = amount;
 		this.balance = balance;
 	}
-	
+
 	public String print() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Operation : ");

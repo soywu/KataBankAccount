@@ -10,18 +10,16 @@ import bank.account.BankRecord;
 public class Deposit extends BankTransaction {
 
 	public static final String OPERATION = "Deposit";
-	
+
 	protected int depositToAccountId;
-	
-	public static Deposit of(BigDecimal amount,
-			int depositToAccountId) {
+
+	public static Deposit of(BigDecimal amount, int depositToAccountId) {
 		return new Deposit(TimeProvider.now(), amount, depositToAccountId);
 	}
-	
-	private Deposit(LocalDateTime transactionTime, BigDecimal amount,
-			int depositToAccountId) {
-		super( transactionTime, amount);
-		this.depositToAccountId=depositToAccountId;
+
+	private Deposit(LocalDateTime transactionTime, BigDecimal amount, int depositToAccountId) {
+		super(transactionTime, amount);
+		this.depositToAccountId = depositToAccountId;
 	}
 
 	public int getDepositToAccountId() {
@@ -29,10 +27,9 @@ public class Deposit extends BankTransaction {
 	}
 
 	@Override
-	public void valid(BankAccount account) throws InvalideTransactionException{
-		if( this.getAmount().compareTo(BigDecimal.ZERO)<=0
-		) {
-			throw new InvalideTransactionException("Deposit amount is invalid: "+this.getAmount());
+	public void valid(BankAccount account) throws InvalideTransactionException {
+		if (this.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
+			throw new InvalideTransactionException("Deposit amount is invalid: " + this.getAmount());
 		}
 	}
 

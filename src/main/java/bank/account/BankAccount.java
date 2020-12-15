@@ -12,13 +12,13 @@ public class BankAccount {
 	private String firstName;
 	private String familyName;
 	private BigDecimal balance;
-	
+
 	List<BankRecord> records;
 
 	public static BankAccount of(String firstName, String familyName) {
 		return new BankAccount(firstName, familyName, IdProvider.getCountAndPlusOne());
 	}
-	
+
 	private BankAccount(String firstName, String familyName, int id) {
 		this.firstName = firstName;
 		this.familyName = familyName;
@@ -42,7 +42,7 @@ public class BankAccount {
 	public BigDecimal getBalance() {
 		return balance;
 	}
-	
+
 	public void updateBalance(BigDecimal update) {
 		balance = balance.add(update);
 	}
@@ -50,7 +50,7 @@ public class BankAccount {
 	public List<BankRecord> getRecords() {
 		return records;
 	}
-	
+
 	public BankRecord acceptTransaction(BankTransaction transaction) throws InvalideTransactionException {
 		transaction.valid(this);
 		BankRecord record = transaction.process(this);
@@ -60,7 +60,7 @@ public class BankAccount {
 
 	public List<String> printStatement() {
 		List<String> res = new ArrayList<>();
-		
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("Bank Statement, ");
 		sb.append("Name: ");
@@ -70,12 +70,12 @@ public class BankAccount {
 		sb.append(", ");
 		sb.append("Account id: ");
 		sb.append(this.getId());
-		
+
 		res.add(sb.toString());
-		for(BankRecord record : records) {
+		for (BankRecord record : records) {
 			res.add(record.print());
 		}
 		return res;
 	}
-	
+
 }
