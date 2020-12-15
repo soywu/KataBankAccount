@@ -1,18 +1,14 @@
 package bank;
 
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDateTime;
+import org.junit.Test;
 
 
 public class UtilsTest {
 	  @Test
 	  public void dTFormatterTest() {
-		LocalDateTime ldt = LocalDateTime.of(2020, 01, 01, 12, 12,12);
-		String expected = "2020-01-01 12:12:12";
-	    assertThat(expected.equals(Utils.DTFormatter.format(ldt))).isTrue();
+	    assertThat(TestHelper.LDT_STRING.equals(Utils.DTFormatter.format(TestHelper.LDT))).isTrue();
 	  }
 	 
 }

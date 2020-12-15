@@ -11,6 +11,10 @@ import bank.transcation.Deposit;
 import bank.transcation.InvalideTransactionException;
 import bank.transcation.Withdraw;
 
+/**
+ * Bank Main System.
+ * Using Singleton pattern
+ */
 public class Main {
 	
 	private static class Holder {
@@ -39,7 +43,7 @@ public class Main {
 	
 	public BankAccount getAccount(int accountId) throws BankAccountNotFoundException {
 		BankAccount ac = accounts.get(accountId);
-		if(ac==null) throw new BankAccountNotFoundException();
+		if(ac==null) throw new BankAccountNotFoundException("Account not found for Id: "+accountId);
 		return ac;
 	}
 	

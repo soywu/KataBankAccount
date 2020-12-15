@@ -9,7 +9,7 @@ import bank.account.BankRecord;
 
 public class Deposit extends BankTransaction {
 
-	protected static final String OPERATION = "Deposit";
+	public static final String OPERATION = "Deposit";
 	
 	protected int depositToAccountId;
 	
@@ -32,9 +32,8 @@ public class Deposit extends BankTransaction {
 	public void valid(BankAccount account) throws InvalideTransactionException{
 		if( this.getAmount().compareTo(BigDecimal.ZERO)<=0
 		) {
-			throw new InvalideTransactionException();
+			throw new InvalideTransactionException("Deposit amount is invalid: "+this.getAmount());
 		}
-		
 	}
 
 	@Override

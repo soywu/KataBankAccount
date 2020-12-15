@@ -9,7 +9,7 @@ import bank.account.BankRecord;
 
 public class Withdraw extends BankTransaction{
 
-	protected static final String OPERATION = "Withdraw";
+	public static final String OPERATION = "Withdraw";
 	
 	protected int withdrawFromAccountId;
 	
@@ -27,13 +27,16 @@ public class Withdraw extends BankTransaction{
 	public int getWithdrawFromAccountId() {
 		return withdrawFromAccountId;
 	}
-	
+
 	@Override
-	public void valid(BankAccount account) throws InvalideTransactionException{
-		if( account.getBalance().compareTo(this.getAmount())<0
-		|| this.getAmount().compareTo(BigDecimal.ZERO)<0
-		) {
-			throw new InvalideTransactionException();
+	public void valid(BankAccount account) throws InvalideTransactionException {
+		if (this.getAmount().compareTo(BigDecimal.ZERO) < 0)
+		{
+			throw new InvalideTransactionException("Withdraw amount is not valid: " + this.getAmount());
+		} else if (account.getBalance().compareTo(this.getAmount()) < 0) {
+
+			throw new InvalideTransactionException("Withdraw amount is bigger than account balance, amount: "
+					+ this.getAmount() + ", balance: " + account.getBalance());
 		}
 	}
 	
